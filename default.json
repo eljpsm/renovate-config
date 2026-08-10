@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "group:allNonMajor",
+    "group:allDigest",
+    ":enableVulnerabilityAlerts"
+  ],
+  "timezone": "Pacific/Auckland",
+  "schedule": ["* 0-4 * * 1"],
+  "minimumReleaseAge": "3 days",
+  "prConcurrentLimit": 5,
+  "reviewersFromCodeOwners": true,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "assignees": ["eljpsm"],
+    "schedule": "at any time"
+  }
+}

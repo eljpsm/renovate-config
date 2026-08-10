@@ -1,0 +1,31 @@
+# Validate Renovate config.
+name: validate
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - default.json
+      - .github/workflows/validate.yml
+  push:
+    paths:
+      - default.json
+      - .github/workflows/validate.yml
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: validate default.json
+        run: npx --yes --package=renovate@latest renovate-config-validator default.json
