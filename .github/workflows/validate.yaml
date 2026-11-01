@@ -8,11 +8,11 @@ on:
   pull_request:
     paths:
       - default.json
-      - .github/workflows/validate.yml
+      - .github/workflows/validate.yaml
   push:
     paths:
       - default.json
-      - .github/workflows/validate.yml
+      - .github/workflows/validate.yaml
   workflow_dispatch:
 
 jobs:
