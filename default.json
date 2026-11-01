@@ -10,9 +10,15 @@
   "timezone": "Pacific/Auckland",
   "schedule": ["* 0-4 * * 1"],
   "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
   "prConcurrentLimit": 5,
   "reviewersFromCodeOwners": true,
   "packageRules": [
+    {
+      "description": "Lock file maintenance and replacements have no release timestamp, so the minimum release age would hold them back forever",
+      "matchUpdateTypes": ["lockFileMaintenance", "replacement"],
+      "minimumReleaseAge": null
+    },
     {
       "description": "Group pre-1.0 updates separately so they don't block automerge of stable updates",
       "matchUpdateTypes": ["minor", "patch"],
