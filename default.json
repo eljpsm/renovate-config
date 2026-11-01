@@ -4,13 +4,23 @@
     "config:best-practices",
     "group:allNonMajor",
     "group:allDigest",
-    ":enableVulnerabilityAlerts"
+    ":enableVulnerabilityAlerts",
+    ":automergeStableNonMajor"
   ],
   "timezone": "Pacific/Auckland",
   "schedule": ["* 0-4 * * 1"],
   "minimumReleaseAge": "3 days",
   "prConcurrentLimit": 5,
   "reviewersFromCodeOwners": true,
+  "packageRules": [
+    {
+      "description": "Group pre-1.0 updates separately so they don't block automerge of stable updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "/^v?0\\./",
+      "groupName": "pre-1.0 dependencies",
+      "automerge": false
+    }
+  ],
   "vulnerabilityAlerts": {
     "labels": ["security"],
     "assignees": ["eljpsm"],
